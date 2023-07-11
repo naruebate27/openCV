@@ -11,16 +11,16 @@ import time
 import math
 from sort import *
 
-mydb = mysql.connector.connect(
-  host='34.142.132.214',
-  user='root',
-  password='',
-  database='detectdb'
-)
-if mydb.is_connected():
-    db_Info = mydb.get_server_info()
-    print("Connected to MySQL Server version ", db_Info)
-    cursor = mydb.cursor()
+# mydb = mysql.connector.connect(
+#   host='34.142.132.214',
+#   user='root',
+#   password='',
+#   database='detectdb'
+# )
+# if mydb.is_connected():
+#     db_Info = mydb.get_server_info()
+#     print("Connected to MySQL Server version ", db_Info)
+#     cursor = mydb.cursor()
 options = {"CAP_PROP_FRAME_WIDTH":1920, "CAP_PROP_FRAME_HEIGHT":1080}
 cap = CamGear(source='https://www.youtube.com/watch?v=En_3pkxIJRM', stream_mode=True, logging=True, **options).start()
 # cap = cv2.VideoCapture('cars.mp4')  # For Video
@@ -203,20 +203,20 @@ while True:
     cv2.putText(img, "Motorbike detected : "+ str(len(totalMotorbikeCount)),(55,200),cv2.FONT_HERSHEY_PLAIN,2,(50,50,255),2)
     cv2.putText(img, "Persons detected : "+ str(len(totalPersonCount)),(55,250),cv2.FONT_HERSHEY_PLAIN,2,(50,50,255),2)
 
-    Car = len(totalCarCount)
-    Truck = len(totalTruckCount)
-    Bus = len(totalBusCount)
-    Motorbike = len(totalMotorbikeCount)
-    Person = len(totalPersonCount)
-    current_GMT = time.gmtime()
-    time_stamp = calendar.timegm(current_GMT)
-    date_time = datetime.fromtimestamp(time_stamp)
-    Date_time = date_time
-    print(Car, Person, Date_time)
-    add_dta = """INSERT INTO detect_tb (car, truck, bus, motorbike, person, time ) VALUES ( %s, %s, %s, %s, %s, %s  )"""
+    # Car = len(totalCarCount)
+    # Truck = len(totalTruckCount)
+    # Bus = len(totalBusCount)
+    # Motorbike = len(totalMotorbikeCount)
+    # Person = len(totalPersonCount)
+    # current_GMT = time.gmtime()
+    # time_stamp = calendar.timegm(current_GMT)
+    # date_time = datetime.fromtimestamp(time_stamp)
+    # Date_time = date_time
+    # print(Car, Person, Date_time)
+    # add_dta = """INSERT INTO detect_tb (car, truck, bus, motorbike, person, time ) VALUES ( %s, %s, %s, %s, %s, %s  )"""
 
-    cursor.execute(add_dta, (Car, Truck, Bus, Motorbike, Person, Date_time))
-    mydb.commit()
+    # cursor.execute(add_dta, (Car, Truck, Bus, Motorbike, Person, Date_time))
+    # mydb.commit()
 
     cv2.imshow("Image", img)
     # cv2.imshow("ImageRegion", imgRegion)
