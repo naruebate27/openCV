@@ -12,7 +12,7 @@ import math
 from sort import *
 
 mydb = mysql.connector.connect(
-  host='localhost',
+  host='34.142.132.214',
   user='root',
   password='',
   database='detectdb'
